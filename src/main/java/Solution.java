@@ -29,22 +29,23 @@ public class Solution {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result = new ListNode(0);
-        sum(l1,l2,result);
-
-        return result;
+        return sum(l1,l2);
     }
 
-    public int sum(ListNode l1, ListNode l2, ListNode result){
+    public ListNode sum(ListNode l1, ListNode l2){
         int carry = 0;
 
+        ListNode nextSum = null;
+
         if(l1.next!=null){
-            carry = sum(l1.next,l2.next,result);
+            nextSum = sum(l1.next,l2.next);
+            carry =  (l1.next.val+l2.next.val)/10;
         }
 
-        result.next= new ListNode((l1.val+l2.val)%10);
+        ListNode result = new ListNode((l1.val+l2.val+carry)%10);
+        result.next = nextSum;
 
-        return l1.val+l2.val-(l1.val+l2.val)%10;
+        return result;
     }
 
 }

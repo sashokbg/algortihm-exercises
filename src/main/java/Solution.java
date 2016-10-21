@@ -58,9 +58,7 @@ public class Solution {
             nextCarry =  (l1.val+l2.val+previousCarry)/10;
         }
 
-        if((l1 != null) || (l2 != null)){
-            currentSum.next = sum(l1 == null ? null: l1.next,l2 == null ? null: l2.next, nextCarry);
-        }
+        currentSum.next = sum(l1 == null ? null: l1.next,l2 == null ? null: l2.next, nextCarry);
 
         return currentSum;
     }

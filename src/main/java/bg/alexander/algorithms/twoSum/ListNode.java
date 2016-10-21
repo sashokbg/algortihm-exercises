@@ -1,3 +1,5 @@
+package bg.alexander.algorithms.twoSum;
+
 public class ListNode {
     int val;
     ListNode next;

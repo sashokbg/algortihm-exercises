@@ -1,4 +1,4 @@
-//Definitiotion for singly-linked list.
+package bg.alexander.algorithms.twoSum;//Definitiotion for singly-linked list.
 //
 //    public class ListNode {
 //

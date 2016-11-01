@@ -17,27 +17,32 @@ import java.util.Map;
 public class LongestSubstring {
     public static void main(String[] args) {
         LongestSubstring longestSubstring = new LongestSubstring();
-        longestSubstring.lengthOfLongestSubstring("abcabcbb");
+        int result = longestSubstring.lengthOfLongestSubstring("pwwkew");
+//      int result = longestSubstring.lengthOfLongestSubstring("abcabcdbb");
+//      int result = longestSubstring.lengthOfLongestSubstring("dvdf");
+
+        System.out.println(result);
     }
 
     public int lengthOfLongestSubstring(String s) {
-        char[] chars = s.toCharArray();
+        return substring(s);
+    }
 
-        if(s.length()==0){
-            return 0;
-        }
-
-        for (int i= 1; i < s.length(); i++) {
-            char currentChar = chars[i];
+    public int substring(String string){
+        int substrlen = 0;
+        int nextSubstrLen = 0;
+        for (int i= 0; i < string.length(); i++) {
+            char currentChar = string.charAt(i);
             for (int j = 0; j < i; j++) {
-                char previousChar = chars[j];
+                char previousChar = string.charAt(j);
                 if (currentChar == previousChar) {
-                    System.out.println(s.substring(0,i));
-                    break;
+                    nextSubstrLen = substring(string.substring(1));
+                    return nextSubstrLen > substrlen ? nextSubstrLen : substrlen;
                 }
             }
+            substrlen++;
         }
 
-        return 0;
+        return substrlen;
     }
 }

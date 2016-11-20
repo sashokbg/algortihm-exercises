@@ -19,20 +19,28 @@ import java.util.Set;
 public class LongestSubstring {
     public static void main(String[] args) {
         LongestSubstring longestSubstring = new LongestSubstring();
-//        int result = longestSubstring.lengthOfLongestSubstring("abba"); //2
-        int result = longestSubstring.lengthOfLongestSubstring("abcabcbb"); //3
+        int result = longestSubstring.lengthOfLongestSubstring("abba"); //2
+//        int result = longestSubstring.lengthOfLongestSubstring("abcabcbb"); //3
 //        int result = longestSubstring.lengthOfLongestSubstring("bb"); //1
 //        int result = longestSubstring.lengthOfLongestSubstring("pwwkew"); //3
 //      int result = longestSubstring.lengthOfLongestSubstring("abcabcdbb"); //4
 //      int result = longestSubstring.lengthOfLongestSubstring("dvdf"); //3
+//      int result = longestSubstring.lengthOfLongestSubstring("a"); //0
 
         System.out.println(result);
     }
 
     public int lengthOfLongestSubstring(String s) {
-        int windowSize = 1;
+        int windowSize = 0;
+        int windowPosition = 0;
 
-
+        while(windowPosition+windowSize < s.length()){
+            while(windowSize+windowPosition+1 <= s.length() && !hasRepetition(s.substring(windowPosition,windowSize+windowPosition+1))){
+                windowSize++;
+            }
+            // when we find a repetition, we move the window
+            windowPosition++;
+        }
 
         return windowSize;
     }
@@ -41,11 +49,11 @@ public class LongestSubstring {
         if(str==null || str.length()==0){
             return false;
         }
-        char lastChar = str.charAt(str.length()-1);
-        for(int i = 0; i < str.length()-2; i++){
-            char currentChar = str.charAt(i);
-            if(currentChar==lastChar){
-                return true;
+        for(int i=0; i< str.length(); i++){
+            for(int j=i+1; j< str.length(); j++){
+                if(str.charAt(i) == str.charAt(j)){
+                    return true;
+                }
             }
         }
         return false;

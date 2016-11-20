@@ -14,11 +14,11 @@ public class LongestSubstringTest {
     @Parameters({",0","a,1","bb,1","abba,2","pwwkew,3","abcabcbb,3","dvdf,3","abcabcdd,4"})
     public void testLongestSubstring(String string, int expected){
         LongestSubstring longestSubstring = new LongestSubstring();
-        assertEquals(longestSubstring.lengthOfLongestSubstring(string),expected);
+        assertEquals(expected, longestSubstring.lengthOfLongestSubstring(string));
     }
 
     @Test
-    @Parameters({" ,false","a,false","abc,false","abca, true"})
+    @Parameters({" ,false","a,false","bb, true","abb, true","bba, true","abc,false","abca, true"})
     public void hasRepeatingChars(String string, boolean expected){
         LongestSubstring longestSubstring = new LongestSubstring();
         assertEquals(longestSubstring.hasRepetition(string),expected);

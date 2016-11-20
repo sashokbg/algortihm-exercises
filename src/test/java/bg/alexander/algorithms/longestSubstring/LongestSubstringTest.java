@@ -16,4 +16,11 @@ public class LongestSubstringTest {
         LongestSubstring longestSubstring = new LongestSubstring();
         assertEquals(longestSubstring.lengthOfLongestSubstring(string),expected);
     }
+
+    @Test
+    @Parameters({" ,false","a,false","abc,false","abca, true"})
+    public void hasRepeatingChars(String string, boolean expected){
+        LongestSubstring longestSubstring = new LongestSubstring();
+        assertEquals(longestSubstring.hasRepetition(string),expected);
+    }
 }

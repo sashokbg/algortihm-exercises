@@ -30,29 +30,24 @@ public class LongestSubstring {
     }
 
     public int lengthOfLongestSubstring(String s) {
-        return substring(s);
+        int windowSize = 1;
+
+
+
+        return windowSize;
     }
 
-    public int substring(String string){
-        int nextSubstrLen = 0;
-
-        Set<Character> uniqueCharacters = new HashSet<>();
-
-        for (int i= 0; i < string.length(); i++) {
-            char currentChar = string.charAt(i);
-            uniqueCharacters.add(currentChar);
-
-            for (int j = i+1; j< string.length(); j++) {
-                char nextChar = string.charAt(j);
-                if(uniqueCharacters.contains(nextChar)){
-                    nextSubstrLen = substring(string.substring(1));
-                    return Math.max(nextSubstrLen, uniqueCharacters.size());
-                }else{
-                    uniqueCharacters.add(nextChar);
-                }
+    public boolean hasRepetition(String str){
+        if(str==null || str.length()==0){
+            return false;
+        }
+        char lastChar = str.charAt(str.length()-1);
+        for(int i = 0; i < str.length()-2; i++){
+            char currentChar = str.charAt(i);
+            if(currentChar==lastChar){
+                return true;
             }
         }
-
-        return uniqueCharacters.size();
+        return false;
     }
 }
